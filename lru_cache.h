@@ -15,7 +15,7 @@ private:
     using map_type = std::unordered_map<K, std::pair<V, queue_iterator>, H, KeyEqual>;
     using map_iterator = typename map_type::iterator;
 
-    enum { DEFAUL_MAX_SIZE = 25000 };
+    enum { DEFAULT_MAX_SIZE = 25000 };
 
     // TODO: Add iterators in LIFO order
 
@@ -24,7 +24,7 @@ public:
     using mapped_type = V;
     using value_type = typename map_type::value_type;
 
-    explicit lru_cache(int max_size = DEFAUL_MAX_SIZE) : m_max_size(max_size) { }
+    explicit lru_cache(int max_size = DEFAULT_MAX_SIZE) : m_max_size(max_size) { }
 
     std::pair<map_iterator, bool> insert(const std::pair<K, V>& p) {
         auto it = m_map.find(p.first);
@@ -69,7 +69,7 @@ public:
 private:
     map_type m_map;
     queue_type m_list;
-    int m_max_size = DEFAUL_MAX_SIZE;
+    int m_max_size = DEFAULT_MAX_SIZE;
 };
 
 } // namespace util
